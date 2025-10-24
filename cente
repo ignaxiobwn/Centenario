@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CIEN SOSTENIDOS POR SU GRACIA</title>
+  
+  <!-- Lightbox CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/baguettebox.js@1.11.1/dist/baguetteBox.min.css">
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Open+Sans:wght@400;600&display=swap');
+
+    body { margin:0; font-family:'Open Sans',sans-serif; background:#f9f9fb; color:#333; overflow-x:hidden; }
+    header{ text-align:center; padding:80px 20px 40px; background:linear-gradient(180deg,#ffffff,#f1f1f5); animation:fadeIn 1.2s ease-in-out; }
+    header h1{ font-family:'Playfair Display',serif; font-size:2.8em; margin:0; color:#222; letter-spacing:1px; }
+    header p{ font-size:1.1em; color:#666; margin-top:10px; }
+    section{ max-width:900px; margin:40px auto; padding:0 20px; animation:fadeUp 1.5s ease; }
+    .reseña{ background:white; padding:25px 30px; border-radius:16px; box-shadow:0 3px 10px rgba(0,0,0,0.08); line-height:1.7; font-size:1.05em; transition:transform .3s ease; }
+    .reseña:hover{ transform:translateY(-3px); }
+    .galeria{ margin-top:30px; display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:10px; padding:0 8px; }
+    @media(max-width:600px){ .galeria{ grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:8px; } }
+    .galeria a{ display:block; position:relative; overflow:hidden; border-radius:14px; box-shadow:0 3px 10px rgba(0,0,0,0.1); transition:transform .3s ease, box-shadow .3s ease; aspect-ratio:1; }
+    .galeria img{ width:100%; height:100%; object-fit:cover; border-radius:inherit; }
+    .galeria a:hover{ transform:scale(1.03); box-shadow:0 8px 18px rgba(0,0,0,0.15); }
+    @media(max-width:480px){ header h1{ font-size:2em } section{ padding:0 10px } .section-title{ font-size:1.5em } }
+    #loadingOverlay{ position:fixed; inset:0; background:rgba(255,255,255,.9); display:flex; align-items:center; justify-content:center; z-index:9999; transition:opacity .3s ease }
+    .spinner{ width:64px; height:64px; border-radius:50%; border:6px solid #e6e6e6; border-top-color:#3b82f6; animation:spin 1s linear infinite }
+    @keyframes spin{ to{ transform:rotate(360deg); } }
+    .section-title{ font-family:'Playfair Display',serif; font-size:1.8em; color:#333; margin:40px 0 20px; text-align:center; padding-bottom:10px; border-bottom:2px solid #eaeaea }
+    .galeria-section{ margin-bottom:60px }
+    footer{ text-align:center; padding:30px; font-size:.9em; color:#777; border-top:1px solid #e0e0e0; margin-top:60px; background:#fafafa }
+    /* Reseña: responsive y colapsable en móviles */
+    .reseña{ transition:max-height .4s ease, padding .2s ease; }
+    .reseña.collapsed{ max-height:220px; overflow:hidden; position:relative; }
+    .reseña.collapsed::after{ content:''; position:absolute; left:0; right:0; bottom:0; height:72px; background:linear-gradient(180deg, rgba(249,249,251,0), #ffffff); pointer-events:none; }
+    .read-more-btn{ display:none; position:absolute; right:16px; bottom:12px; z-index:3; background:#3b82f6; color:#fff; border:none; padding:8px 12px; border-radius:18px; font-size:.9em; cursor:pointer; box-shadow:0 6px 14px rgba(59,130,246,.18); }
+    @media(max-width:600px){
+      .reseña{ font-size:.98em; padding:18px; }
+      .read-more-btn{ display:inline-block; }
+      .section{ padding:0 12px; }
+    }
+    @keyframes fadeIn{ from{ opacity:0; transform:translateY(-15px) } to{ opacity:1; transform:translateY(0) } }
+    @keyframes fadeUp{ from{ opacity:0; transform:translateY(20px) } to{ opacity:1; transform:translateY(0) } }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>CIEN AÑOS SOSTENIDOS POR SU GRACIA</h1>
+    <p>Fiel es el que os llama, el cual también lo hará. — 1 Tesalonicenses 5:24</p>
+  </header>
+
+  <section>
+    <div class="reseña">
+      <h3>Historia de la Iglesia del Señor de Pitrufquén</h3>
+      <p>En el año 1910, el hermano Carlos del Campo se integró a la Alianza Cristiana y Misionera (ACyM) en la ciudad de Río Bueno. Allí, inspirado por el pasaje de <em>Hechos 20:28</em> —“Por tanto, mirad por vosotros, y por todo el rebaño en que el Espíritu Santo os ha puesto por obispos, para apacentar la iglesia del Señor, la cual Él ganó por su propia sangre,”— promovió un renovado derramamiento del Espíritu Santo en la congregación. Este mover espiritual lo llevó, junto a una veintena de creyentes, a apartarse de la ACyM y fundar la primera Iglesia del Señor en Chile, el 11 de diciembre de 1911.</p>
+
+      <p>En enero de 1912, Carlos del Campo viajó a Santiago y, el 26 de octubre de 1913, durante un culto en la Iglesia Metodista Pentecostal, ocurrió una manifestación espiritual semejante a la vivida en Río Bueno. En aquel momento, niños y creyentes, bajo la unción del Espíritu, exclamaron en éxtasis: <strong>“¡Iglesia del Señor, será llamada!”</strong> A partir de entonces, la congregación adoptó formalmente ese nombre. Carlos del Campo fue designado como su primer presidente, acompañado por colaboradores fieles, entre ellos el pastor Tulio Morán, quien afirmaba que la denominación surgió de una revelación divina.</p>
+
+      <hr>
+      <h4>Primer templo en Pitrufquén</h4>
+      <p>El primer templo de la Iglesia del Señor de Pitrufquén se ubicó en la Avenida 2 de Enero N.º 1030, en un terreno facilitado por la Municipalidad, sitio donde actualmente se encuentra la Escuela Integral Ammillan. Antes de contar con un lugar propio, los cultos se realizaban en los hogares de hermanos y hermanas que abrían sus puertas para la adoración.</p>
+
+      <p>En ese mismo templo se llevó a cabo la Conferencia Pastoral de 1932, ocasión que marcó un hito en el desarrollo de la obra local. Su primer pastor fue el hermano Francisco Gajardo, quien ministró desde 1925 hasta 1932. Durante su gestión, el 20 de enero de 1930, nació la Sociedad de Señoras, hoy conocida como Sociedad Femenina, pilar fundamental en la vida espiritual y social de la congregación.</p>
+
+      <p>Posteriormente, ejercieron el ministerio pastoral los hermanos Alarcón (1932–1937) y Bernardo Cisterna Carrasco (1938–1942). Este primer templo, construido con tablas de 1x5 pulgadas, fue testigo de una intensa labor evangelística que encendió el deseo de continuar extendiendo la obra del Señor en la comuna.</p>
+
+      <hr>
+      <h4>Construcción del templo definitivo</h4>
+      <p>Las condiciones rudimentarias de la época impulsaron el anhelo de edificar un templo permanente. Gracias al esfuerzo y generosidad del Pastor José Guillermo Muñoz Muñoz, de su esposa Mercedes Flores y de la familia Muñoz Flores, se logró concretar la construcción del templo definitivo, ubicado en calle Eleuterio Ramírez N.º 252, lugar donde se levanta hasta hoy la casa de adoración.</p>
+
+      <p>Durante el pastorado de Anastasio Jara (1943–1945), el hermano Genaro Segundo Díaz Montecinos propuso organizar una directiva, un coro y formar músicos para la alabanza. Tras orar intensamente, se produjo una manifestación espiritual: un grupo de niños comenzó a danzar e imitar instrumentos musicales, lo que inspiró la creación del Coro Instrumental en 1942. Al año siguiente, en 1943, se fundó la Liga de Jóvenes, siendo la primera a nivel nacional. Ambas organizaciones permanecen activas hasta el día de hoy, fortaleciendo la vida espiritual de la iglesia.</p>
+
+      <hr>
+      <h4>Consolidación y expansión</h4>
+      <p>Los años siguientes estuvieron marcados por el liderazgo de pastores como Antonio Jara (1946–1960) y Guillermo Muñoz Muñoz (1960–1974). Durante el terremoto de 1960, Pitrufquén recibió numerosas familias provenientes de las zonas costeras de Queule y Toltén, quienes hallaron aquí refugio y esperanza.</p>
+
+      <p>Con el tiempo, muchas de estas familias emigraron hacia Argentina, llevando consigo el mensaje del Evangelio. Así se establecieron congregaciones en Bahía Blanca, Mar del Plata, Barrio Belgrano y Barrio Batán, todas ellas nacidas del testimonio y espíritu misionero de esta iglesia.</p>
+
+      <hr>
+      <h4>Templo de Eleuterio Ramírez N.º 252</h4>
+      <p>El terreno donde se levantó el templo de Eleuterio Ramírez N.º 252 fue donado por la familia Muñoz Flores. El 11 de abril de 1976, se iniciaron mejoras estructurales para separar el templo de la casa pastoral. Durante los años 1975 y 1976 sirvieron pastores itinerantes, Jacob Rivas Faúndez y Danilo Leiva, hasta que el 24 de abril de 1976 fue confirmado como pastor titular Jorge Elías Muñoz Pereira, quien dirigió la congregación hasta su fallecimiento en 2021.</p>
+
+      <p>Durante su ministerio surgieron los actuales locales dependientes de Pitrufquén:</p>
+      <ul>
+        <li>Chada (15 de abril de 1973)</li>
+        <li>Chanco (5 de marzo de 1976)</li>
+        <li>Loica (7 de agosto de 1977)</li>
+        <li>Calvuco (21 de agosto de 1977, originalmente “Santa María”)</li>
+      </ul>
+
+      <p>Cada uno de estos locales tiene su propia historia de milagros, conversiones y familias transformadas, testimonio de que Dios cumple sus propósitos y extiende su Evangelio conforme a Su voluntad. En este período también fueron ungidos los pastores Carlos Valdés y Cipriano Bravo (1981), este último sirviendo durante muchos años en la iglesia de Villa Boldo.</p>
+
+      <hr>
+      <h4>Segundo templo y crecimiento ministerial</h4>
+      <p>El 19 de octubre de 1990 se inauguró el segundo templo de Eleuterio Ramírez, bajo el liderazgo del Pastor Jorge Muñoz Pereira. Con dimensiones de 17 metros de frente, 37 de fondo y 5,40 metros de altura, este edificio se convirtió en símbolo del crecimiento y compromiso de la congregación.</p>
+
+      <p>En 1991, la iglesia fue sede de la Asamblea Nacional de Jóvenes, organizada íntegramente por la congregación local, evento que reunió a más de 400 hermanos de todo el país.</p>
+
+      <p>Durante este periodo también se ungió al Pastor Juan Carlos Millacán (1993) y se destacó la participación de hermanas como Yasna Muñoz, Denise Muñoz, Lorena Manqui y Yesenia Curihual, activas en la obra misionera.</p>
+
+      <p>En el año 2006, el templo fue ampliado en 45 m², manteniendo las mismas dimensiones estructurales principales. Dios continuó obrando a través de la vida del Pastor Jorge Muñoz, manifestando milagros y trayendo consuelo a las familias de la comuna. En esos años también fueron ungidos los pastores Ramón Oliva (2011) y Juan Osses.</p>
+
+      <hr>
+      <h4>Ministerios y servicio</h4>
+      <p>A lo largo de los años, la Sociedad Femenina ha sobresalido por su trabajo silencioso, su perseverancia y su entrega en oración. Estas mujeres de fe, muchas ya de avanzada edad, continúan siendo ejemplo de servicio y fidelidad.</p>
+
+      <p>El Coro congregacional ha permanecido como un espacio de alabanza y comunión, donde se mezclan la experiencia y el entusiasmo de las nuevas generaciones. La Juventud local ha sido un motor de expansión del Evangelio, tanto a nivel local como distrital y nacional, destacando su participación en las Asambleas de Jóvenes de 2017 y 2023.</p>
+
+      <p>Desde el año 2011, el Departamento de Amor en Acción ha llevado ayuda y consuelo a muchos hogares, desarrollando una valiosa obra social basada en el amor de Cristo.</p>
+
+      <hr>
+      <h4>Presente y proyección</h4>
+      <p>Desde el año 2021, la Iglesia del Señor de Pitrufquén es ministrada por el Pastor Jorge Eliecer Muñoz Molina y su esposa, la hermana Alejandra Moya Montoya, quienes continúan con compromiso y dedicación el legado espiritual de esta congregación.</p>
+
+      <p>Mirando hacia el futuro, afirmamos con convicción que la vida no se trata de nosotros, sino de Él. Todo lo que el Señor ha puesto en nuestras manos es un medio para extender Su Reino en la tierra. Estamos seguros de que Dios seguirá usando a la Iglesia de Pitrufquén para levantar nuevas obras, nuevos proyectos y nuevas formas de misión, tanto en lo tradicional como en lo innovador. Porque ese es el sello y la gracia que Él nos ha concedido.</p>
+
+      <p><em>“Hasta aquí nos ayudó Jehová.”</em> (1 Samuel 7:12)</p>
+    </div>
+
+    <!-- Contenedor donde se insertan dinámicamente las secciones -->
+    <div id="galerias-container"></div>
+
+    <script>
+      (function(){
+        const container = document.getElementById('galerias-container');
+        if(!container) return;
+
+        // Añadir control para selección local de carpeta (fallback sin servidor)
+        // Mostramos un botón circular sutil en la esquina inferior derecha
+        const localPickerWrapper = document.createElement('div');
+        localPickerWrapper.style.position = 'fixed';
+        localPickerWrapper.style.right = '18px';
+        localPickerWrapper.style.bottom = '18px';
+        localPickerWrapper.style.zIndex = '10000';
+        localPickerWrapper.style.width = '48px';
+        localPickerWrapper.style.height = '48px';
+        localPickerWrapper.style.borderRadius = '50%';
+        localPickerWrapper.style.display = 'flex';
+        localPickerWrapper.style.alignItems = 'center';
+        localPickerWrapper.style.justifyContent = 'center';
+        localPickerWrapper.style.backdropFilter = 'saturate(120%) blur(2px)';
+        localPickerWrapper.style.boxShadow = '0 6px 18px rgba(0,0,0,0.12)';
+        localPickerWrapper.innerHTML = `
+          <label title="Seleccionar fotos (carpeta)" style="display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;background:rgba(59,130,246,0.95);color:white;cursor:pointer;">
+            <!-- icono de cámara simple -->
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M4 7H6L7 5H17L18 7H20C21.1 7 22 7.9 22 9V19C22 20.1 21.1 21 20 21H4C2.9 21 2 20.1 2 19V9C2 7.9 2.9 7 4 7Z" fill="white" opacity="0.95"/>
+              <circle cx="12" cy="14" r="3" fill="#3b82f6"/>
+            </svg>
+            <input id="localFolderInput" type="file" webkitdirectory directory multiple style="display:none" aria-label="Seleccionar carpeta de fotos">
+          </label>
+        `;
+        document.body.appendChild(localPickerWrapper);
+
+        const localInput = localPickerWrapper.querySelector('#localFolderInput');
+        localInput.addEventListener('change', (ev)=>{
+          const files = Array.from(ev.target.files || []);
+          if(files.length) {
+            // Limpiar contenido previo
+            container.innerHTML = '';
+            processLocalFiles(files);
+          }
+        });
+
+        // Permitir drag & drop simple (archivos sueltos)
+        ['dragenter','dragover','dragleave','drop'].forEach(evt => {
+          container.addEventListener(evt, e => e.preventDefault());
+        });
+        container.addEventListener('drop', (e)=>{
+          const dt = e.dataTransfer;
+          if(!dt) return;
+          const items = Array.from(dt.files || []);
+          if(items.length){
+            container.innerHTML = '';
+            processLocalFiles(items);
+          }
+        });
+
+        // Overlay de carga
+        const loadingOverlay = document.createElement('div');
+        loadingOverlay.id = 'loadingOverlay';
+        loadingOverlay.innerHTML = '<div class="spinner" aria-hidden="true"></div>';
+        document.body.appendChild(loadingOverlay);
+
+        let totalToLoad = 0;
+        let loadedCount = 0;
+
+        function checkAllLoaded(){
+          if (totalToLoad === 0) {
+            if (loadingOverlay && loadingOverlay.parentNode) loadingOverlay.parentNode.removeChild(loadingOverlay);
+            return;
+          }
+          if (loadedCount >= totalToLoad) {
+            setTimeout(()=>{ if (loadingOverlay && loadingOverlay.parentNode) loadingOverlay.style.opacity = '0'; setTimeout(()=>{ if (loadingOverlay && loadingOverlay.parentNode) loadingOverlay.parentNode.removeChild(loadingOverlay); },350); }, 200);
+          }
+        }
+
+        // Procesar archivos seleccionados localmente (FileList)
+        function processLocalFiles(fileList){
+          // Agrupar por carpeta usando webkitRelativePath cuando esté disponible
+          const map = new Map();
+          fileList.forEach(file => {
+            // filtrar tipos de imagen
+            if(!file.type || !file.type.startsWith('image')) return;
+            const relative = file.webkitRelativePath || file.name;
+            // Determinar carpeta: todo antes del último /
+            const idx = relative.lastIndexOf('/');
+            const folder = idx > 0 ? relative.slice(0, idx) : 'Otras Fotografías';
+            const name = relative.slice(idx+1);
+            const url = URL.createObjectURL(file);
+            if(!map.has(folder)) map.set(folder, []);
+            map.get(folder).push({ name, url });
+          });
+
+          // Añadir secciones al DOM
+          for(const [folder, files] of map.entries()){
+            const section = createGallerySection(folder, files);
+            container.appendChild(section);
+          }
+
+          // Inicializar lightbox
+          try{ if(window.baguetteBox) baguetteBox.run('.galeria', { animation: 'fadeIn', noScrollbars: true, buttons: true }); }catch(e){}
+          checkAllLoaded();
+        }
+
+        function createGallerySection(folderName, files){
+          const section = document.createElement('div');
+          section.className = 'galeria-section';
+
+          const heading = document.createElement('h2');
+          heading.className = 'section-title';
+          heading.textContent = folderName;
+          section.appendChild(heading);
+
+          const gallery = document.createElement('div');
+          gallery.className = 'galeria';
+
+          files.forEach(f => {
+            const link = document.createElement('a');
+            // f puede ser un string (desde PHP/list.php) o un objeto {name, url} (desde selección local)
+            let href = '';
+            let name = '';
+            if (typeof f === 'string'){
+              if (folderName === 'Otras Fotografías') {
+                href = 'fts centenario/' + encodeURIComponent(f);
+              } else {
+                href = 'fts centenario/' + encodeURIComponent(folderName) + '/' + encodeURIComponent(f);
+              }
+              name = f;
+            } else if (f && typeof f === 'object') {
+              href = f.url || f.href || '';
+              name = f.name || f.fileName || '';
+            }
+            link.href = href || '#';
+            const caption = (name || href || '').replace(/\.[^.]+$/, '').replace(/_/g, ' ').replace(/^.*\//, '');
+            link.setAttribute('data-caption', caption);
+
+            const img = document.createElement('img');
+            img.src = href;
+            img.alt = caption;
+            img.title = caption;
+            img.loading = 'lazy';
+
+            totalToLoad++;
+            img.addEventListener('load', () => { loadedCount++; checkAllLoaded(); });
+            img.addEventListener('error', () => {
+              console.warn('No se pudo cargar la imagen:', href);
+              img.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400"><rect width="100%" height="100%" fill="%23f3f4f6"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="%23777" font-family="Arial" font-size="20">Imagen no disponible</text></svg>';
+              loadedCount++; checkAllLoaded();
+            });
+
+            link.appendChild(img);
+            gallery.appendChild(link);
+          });
+
+          section.appendChild(gallery);
+          return section;
+        }
+
+        // Pedir la estructura de carpetas desde PHP
+        fetch('list.php')
+          .then(res => res.json())
+          .then(data => {
+            // data: { "Carpeta": ["img1.jpg","img2.jpg"], "Otras Fotografías": ["..."], ... }
+            Object.entries(data).forEach(([folder, files]) => {
+              if (!files || files.length === 0) return;
+              const section = createGallerySection(folder, files);
+              container.appendChild(section);
+            });
+
+            // Inicializar lightbox ahora que las galerías están en el DOM
+            if (window.baguetteBox) {
+              baguetteBox.run('.galeria', { animation: 'fadeIn', noScrollbars: true, buttons: true });
+            }
+
+            checkAllLoaded();
+          })
+          .catch(err => { console.error('Error cargando list.php:', err); checkAllLoaded(); });
+
+        // Fallback: si tras 6s no se han cargado todas las imágenes, ocultar overlay
+        setTimeout(()=>{ checkAllLoaded(); }, 6000);
+
+        // --- Mejoras responsive: colapsar la reseña en pantallas pequeñas con botón "Leer más" ---
+        function setupResenaToggle(){
+          const resena = document.querySelector('.reseña');
+          if(!resena) return;
+
+          // Crear botón si no existe
+          let btn = resena.querySelector('.read-more-btn');
+          if(!btn){
+            btn = document.createElement('button');
+            btn.className = 'read-more-btn';
+            btn.type = 'button';
+            btn.textContent = 'Leer más';
+            // colocarlo relativamente al contenedor
+            resena.appendChild(btn);
+          }
+
+          function applyState(){
+            const small = window.matchMedia('(max-width:600px)').matches;
+            if(small){
+              // aplicar colapso inicial
+              resena.classList.add('collapsed');
+              btn.style.display = 'inline-block';
+              btn.textContent = 'Leer más';
+            } else {
+              resena.classList.remove('collapsed');
+              btn.style.display = 'none';
+            }
+          }
+
+          btn.addEventListener('click', ()=>{
+            const expanded = resena.classList.toggle('collapsed');
+            if(expanded){
+              // ahora colapsado -> mostrar "Leer más"
+              btn.textContent = 'Leer más';
+            } else {
+              // ahora expandido -> mostrar "Mostrar menos"
+              btn.textContent = 'Mostrar menos';
+            }
+          });
+
+          // aplicar al inicio y en resize
+          applyState();
+          window.addEventListener('resize', applyState);
+        }
+
+        // Ejecutar la configuración de la reseña (está en DOM desde el inicio)
+        try{ setupResenaToggle(); }catch(e){ console.warn('Error setupResenaToggle', e); }
+
+      })();
+    </script>
+
+  <!-- Lightbox JS -->
+  <script src="https://cdn.jsdelivr.net/npm/baguettebox.js@1.11.1/dist/baguetteBox.min.js"></script>
+  <script>
+    // Mantener inicialización en load para compatibilidad; baguetteBox ya fue corrido después de fetch si estaba disponible
+    window.addEventListener('load', function() {
+      try {
+        if (window.baguetteBox) baguetteBox.run('.galeria', { animation: 'fadeIn', noScrollbars: true, buttons: true });
+      } catch(e) { /* no bloquear */ }
+    });
+  </script>
+
+  <footer>
+    © 2025 CIEN SOSTENIDOS POR SU GRACIA — Todos los derechos reservados
+  </footer>
+
+</body>
+</html>
