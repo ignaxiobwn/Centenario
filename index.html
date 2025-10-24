@@ -54,6 +54,57 @@
         const container = document.getElementById('galerias-container');
         if(!container) return;
 
+        // Añadir control para selección local de carpeta (fallback sin servidor)
+        // Mostramos un botón circular sutil en la esquina inferior derecha
+        const localPickerWrapper = document.createElement('div');
+        localPickerWrapper.style.position = 'fixed';
+        localPickerWrapper.style.right = '18px';
+        localPickerWrapper.style.bottom = '18px';
+        localPickerWrapper.style.zIndex = '10000';
+        localPickerWrapper.style.width = '48px';
+        localPickerWrapper.style.height = '48px';
+        localPickerWrapper.style.borderRadius = '50%';
+        localPickerWrapper.style.display = 'flex';
+        localPickerWrapper.style.alignItems = 'center';
+        localPickerWrapper.style.justifyContent = 'center';
+        localPickerWrapper.style.backdropFilter = 'saturate(120%) blur(2px)';
+        localPickerWrapper.style.boxShadow = '0 6px 18px rgba(0,0,0,0.12)';
+        localPickerWrapper.innerHTML = `
+          <label title="Seleccionar fotos (carpeta)" style="display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;background:rgba(59,130,246,0.95);color:white;cursor:pointer;">
+            <!-- icono de cámara simple -->
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M4 7H6L7 5H17L18 7H20C21.1 7 22 7.9 22 9V19C22 20.1 21.1 21 20 21H4C2.9 21 2 20.1 2 19V9C2 7.9 2.9 7 4 7Z" fill="white" opacity="0.95"/>
+              <circle cx="12" cy="14" r="3" fill="#3b82f6"/>
+            </svg>
+            <input id="localFolderInput" type="file" webkitdirectory directory multiple style="display:none" aria-label="Seleccionar carpeta de fotos">
+          </label>
+        `;
+        document.body.appendChild(localPickerWrapper);
+
+        const localInput = localPickerWrapper.querySelector('#localFolderInput');
+        localInput.addEventListener('change', (ev)=>{
+          const files = Array.from(ev.target.files || []);
+          if(files.length) {
+            // Limpiar contenido previo
+            container.innerHTML = '';
+            processLocalFiles(files);
+          }
+        });
+
+        // Permitir drag & drop simple (archivos sueltos)
+        ['dragenter','dragover','dragleave','drop'].forEach(evt => {
+          container.addEventListener(evt, e => e.preventDefault());
+        });
+        container.addEventListener('drop', (e)=>{
+          const dt = e.dataTransfer;
+          if(!dt) return;
+          const items = Array.from(dt.files || []);
+          if(items.length){
+            container.innerHTML = '';
+            processLocalFiles(items);
+          }
+        });
+
         // Overlay de carga
         const loadingOverlay = document.createElement('div');
         loadingOverlay.id = 'loadingOverlay';
@@ -73,6 +124,34 @@
           }
         }
 
+        // Procesar archivos seleccionados localmente (FileList)
+        function processLocalFiles(fileList){
+          // Agrupar por carpeta usando webkitRelativePath cuando esté disponible
+          const map = new Map();
+          fileList.forEach(file => {
+            // filtrar tipos de imagen
+            if(!file.type || !file.type.startsWith('image')) return;
+            const relative = file.webkitRelativePath || file.name;
+            // Determinar carpeta: todo antes del último /
+            const idx = relative.lastIndexOf('/');
+            const folder = idx > 0 ? relative.slice(0, idx) : 'Otras Fotografías';
+            const name = relative.slice(idx+1);
+            const url = URL.createObjectURL(file);
+            if(!map.has(folder)) map.set(folder, []);
+            map.get(folder).push({ name, url });
+          });
+
+          // Añadir secciones al DOM
+          for(const [folder, files] of map.entries()){
+            const section = createGallerySection(folder, files);
+            container.appendChild(section);
+          }
+
+          // Inicializar lightbox
+          try{ if(window.baguetteBox) baguetteBox.run('.galeria', { animation: 'fadeIn', noScrollbars: true, buttons: true }); }catch(e){}
+          checkAllLoaded();
+        }
+
         function createGallerySection(folderName, files){
           const section = document.createElement('div');
           section.className = 'galeria-section';
@@ -87,14 +166,22 @@
 
           files.forEach(f => {
             const link = document.createElement('a');
+            // f puede ser un string (desde PHP/list.php) o un objeto {name, url} (desde selección local)
             let href = '';
-            if (folderName === 'Otras Fotografías') {
-              href = 'fts centenario/' + encodeURIComponent(f);
-            } else {
-              href = 'fts centenario/' + encodeURIComponent(folderName) + '/' + encodeURIComponent(f);
+            let name = '';
+            if (typeof f === 'string'){
+              if (folderName === 'Otras Fotografías') {
+                href = 'fts centenario/' + encodeURIComponent(f);
+              } else {
+                href = 'fts centenario/' + encodeURIComponent(folderName) + '/' + encodeURIComponent(f);
+              }
+              name = f;
+            } else if (f && typeof f === 'object') {
+              href = f.url || f.href || '';
+              name = f.name || f.fileName || '';
             }
-            link.href = href;
-            const caption = f.replace(/\.[^.]+$/, '').replace(/_/g, ' ');
+            link.href = href || '#';
+            const caption = (name || href || '').replace(/\.[^.]+$/, '').replace(/_/g, ' ').replace(/^.*\//, '');
             link.setAttribute('data-caption', caption);
 
             const img = document.createElement('img');
